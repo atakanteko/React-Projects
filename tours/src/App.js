@@ -15,6 +15,11 @@ function App() {
     setIsLoading(false)
   }
 
+  const deleteTour = (id) => {
+    const newTours = tours.filter(i => i.id !== id)
+    setTours(newTours)
+  }
+
   useEffect(()=> {
     fetchData()
   }, [])
@@ -24,7 +29,7 @@ function App() {
   } else {
     return (
       <main>
-        <Tours tours={tours} />
+        { tours.map((tour, index) => <Tours  key={index} {...tour} deleteTour={deleteTour} />) }
       </main>
     )
   }
