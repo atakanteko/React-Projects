@@ -26,11 +26,13 @@ function App() {
 
   if (isLoading) {
     return <main><Loading /></main>
+  } else if(tours.length === 0){
+    return <main><h1>No tours found</h1></main>
   } else {
     return (
-      <main>
-        { tours.map((tour, index) => <Tours  key={index} {...tour} deleteTour={deleteTour} />) }
-      </main>
+        <main>
+          { tours.map((tour, index) => <Tours  key={index} {...tour} deleteTour={deleteTour} />) }
+        </main>
     )
   }
 }
